@@ -23,6 +23,6 @@ Hibernate, JPA | RxJS
 - ☁️ OAuth2 Login via Google & GitHub
 - ♻️ Refresh Token Mechanism
 - 🧭 Route Guards in Angular
-- 🛡️ Backend API Protection with Spring Security
+- 🛡️ Backend API Protection with Spring Security.
 
 
