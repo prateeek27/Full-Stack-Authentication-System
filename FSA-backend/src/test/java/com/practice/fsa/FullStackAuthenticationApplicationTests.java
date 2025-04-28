@@ -1,4 +1,4 @@
-package com.practice.FSA;
+package com.practice.fsa;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

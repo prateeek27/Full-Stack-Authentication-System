@@ -1,4 +1,4 @@
-package com.practice.FSA.controller;
+package com.practice.fsa.controller;
 
 
 import org.springframework.http.HttpEntity;

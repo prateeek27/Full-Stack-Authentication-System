@@ -1,12 +1,26 @@
-package com.practice.FSA.entity;
+package com.practice.fsa.entity;
 
+import com.fasterxml.jackson.annotation.JsonTypeId;
+import jakarta.persistence.*;
 import lombok.Data;
 
+import javax.naming.Name;
+
 @Data
+@Entity
+@Table(name = "USERS")
 public class User {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
+    @Column(name = "username")
     private String username;
+
+    @Column(name = "password")
     private String password;
+
+    @Column(name = "email")
     private String email;
 
     public User() {
@@ -40,5 +54,15 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 }

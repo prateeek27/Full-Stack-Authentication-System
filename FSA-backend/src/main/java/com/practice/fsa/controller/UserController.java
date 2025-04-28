@@ -1,12 +1,10 @@
-package com.practice.FSA.controller;
+package com.practice.fsa.controller;
 
 
-import com.practice.FSA.entity.User;
-import com.practice.FSA.service.UserService;
+import com.practice.fsa.entity.User;
+import com.practice.fsa.service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
-import org.springframework.http.HttpRequest;
 import org.springframework.security.web.csrf.CsrfToken;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
