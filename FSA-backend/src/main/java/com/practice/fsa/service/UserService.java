@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,15 +20,16 @@ public class UserService implements UserDetailsService {
     @Autowired
     private UsersRepo usersRepo;
 
+    private BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(15);
 
     @PostConstruct
     public void saveInitailData() {
-        usersRepo.save(new User("fas-dev", "123", "fsa@gmail.com"));
-        usersRepo.save(new User("Admin", "123", "admin@gmail.com"));
+        usersRepo.save(new User("fas-dev", encoder.encode("123"), "fsa@gmail.com"));
+        usersRepo.save(new User("Admin", encoder.encode("456"), "admin@gmail.com"));
     }
 
     public User registerUser(String username, String password, String email) {
-        return usersRepo.save(new User(username, password, email));
+        return usersRepo.save(new User(username, encoder.encode(password), email));
     }
 
     public List<User> getAllUsers() {

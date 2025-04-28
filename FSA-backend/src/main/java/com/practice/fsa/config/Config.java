@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
@@ -32,7 +33,7 @@ public class Config {
 
     @Bean
     public AuthenticationProvider authenticationProvider(){
-        DaoAuthenticationProvider auth =  new DaoAuthenticationProvider(NoOpPasswordEncoder.getInstance());
+        DaoAuthenticationProvider auth =  new DaoAuthenticationProvider(new BCryptPasswordEncoder(15));
         auth.setUserDetailsService(userService);
         return auth;
     }
