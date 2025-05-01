@@ -7,10 +7,11 @@ import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 @RestController
-@RequestMapping("/FSA/api/user")
+@RequestMapping("/fsa/api/user")
 public class UserController {
 
     private final UserService userService;
@@ -30,6 +31,11 @@ public class UserController {
     }
     @PostMapping("/add")
     public User addUser(@RequestBody User user) {
-        return userService.registerUser(user.getUsername(), user.getPassword(), user.getEmail());
+        return userService.registerUser(user);
+    }
+
+    @PostMapping("/login")
+    public String loginUser(@RequestBody User user) throws NoSuchAlgorithmException {
+        return userService.loginUser(user.getUsername(),user.getPassword());
     }
 }
